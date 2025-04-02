@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // === Typed.js Auto Typing ===
+  // Typed.js Auto Typing
   if (typeof Typed !== "undefined") {
     new Typed(".typing-text", {
       strings: [
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // === Scroll-hide Header ===
+  // Scroll-hide Header
   let lastScrollTop = 0;
   const header = document.getElementById("site-header");
 
@@ -27,10 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTop = Math.max(0, currentScroll);
   });
 
-  // === Dark Mode Toggle + Persistence ===
+  // Dark Mode Toggle
   const toggleCheckbox = document.getElementById("dark-mode-toggle");
   const html = document.documentElement;
-
   if (localStorage.getItem("theme") === "light") {
     html.setAttribute("data-theme", "light");
     toggleCheckbox.checked = false;
@@ -45,9 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("theme", theme);
   });
 
-  // === Resume Download Animation + Trigger ===
+  // Resume Download Animation
   const downloadCheckbox = document.getElementById("download-checkbox");
-
   if (downloadCheckbox) {
     downloadCheckbox.addEventListener("change", () => {
       if (downloadCheckbox.checked) {
@@ -59,20 +57,17 @@ document.addEventListener("DOMContentLoaded", function () {
           a.click();
           document.body.removeChild(a);
           downloadCheckbox.checked = false;
-        }, 3900); // Matches animation delay
+        }, 3900);
       }
     });
   }
 
-  // === Reveal Team Cards on Scroll (Optional Animation Feature) ===
+  // Team Card Reveal on Scroll
   const teamCards = document.querySelectorAll(".teams-container .card");
-
   const revealOnScroll = () => {
     const triggerBottom = window.innerHeight * 0.9;
-
     teamCards.forEach((card) => {
       const cardTop = card.getBoundingClientRect().top;
-
       if (cardTop < triggerBottom) {
         card.classList.add("show");
       } else {
@@ -80,18 +75,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   };
-
-  // If team cards exist, run scroll animation
   if (teamCards.length > 0) {
     revealOnScroll();
     window.addEventListener("scroll", revealOnScroll);
   }
-});
 
-
-document.addEventListener("DOMContentLoaded", function () {
+  // Intersection Observer for fade-up
   const animatedCards = document.querySelectorAll(".fade-up");
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -100,7 +90,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }, { threshold: 0.1 });
-
   animatedCards.forEach(card => observer.observe(card));
 });
-
