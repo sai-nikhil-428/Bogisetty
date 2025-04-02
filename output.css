@@ -19,6 +19,7 @@
   --btn-hover: #16a34a;
 }
 
+
 /* === Global === */
 html {
   transition: background 0.3s, color 0.3s;
@@ -267,11 +268,11 @@ body {
 }
 
 /* === Home Section === */
+/* Home Section */
 .home-section {
   padding: 7rem 2rem 4rem;
   background: var(--bg-color);
 }
-
 .home-grid {
   display: flex;
   flex-wrap: wrap;
@@ -281,27 +282,25 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .home-text {
   flex: 1 1 50%;
 }
-
 .intro {
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
-
 .text-highlight,
 .cursor {
   color: var(--accent-color);
 }
-
 .cursor {
   font-size: 1.5rem;
   animation: blink 1s infinite;
 }
-
+@keyframes blink {
+  50% { opacity: 0; }
+}
 .home-text p {
   font-size: 1rem;
   line-height: 1.6;
@@ -390,15 +389,18 @@ body {
 .teams-title {
   margin-top: 6rem;
   text-align: center;
-  color: white;
+  color: var(--text-color);
+  /* color: white; */
   font-size: 2rem;
 }
 
 .teams-subtitle {
   text-align: center;
-  color: rgba(255, 255, 255, 0.8);
+  /* color: rgba(255, 255, 255, 0.8);*/
   font-size: 1rem;
   margin-bottom: 2rem;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .teams-container {
@@ -550,4 +552,382 @@ body {
 
 @keyframes blink {
   50% { opacity: 0; }
+}
+
+/* === ABOUT SECTION === */
+
+.about-section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 2rem 2rem 4rem; /* reduced top padding from 4rem or 5rem to 2rem */
+  border-radius: 1rem;
+  max-width: 1300px;
+  margin: 2rem auto;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 1rem; /* try 0 or 1rem instead of something larger */
+}
+
+.about-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Left: Title, Summary, and Image */
+/* Left */
+.about-left {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ✅ aligns everything to the left */
+  text-align: left;        /* ✅ ensures text inside is left aligned */
+}
+
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color:  #7c3aed;
+  text-align: left; /* ✅ extra safety */
+}
+
+
+.about-subheading {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: gray;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.about-image img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+
+/* Right: Bullet List */
+
+/* Right */
+.about-right {
+  flex: 1 1 50%;
+  margin-top: 2.3rem; /* ✅ key alignment fix */
+}
+
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.about-list li::before {
+  content: "✔";
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-top: 0.1rem;
+}
+
+/* 👇 ADD THIS */
+.about-list li span {
+  display: block;
+  padding-top: 0.15rem; /* ✅ Nudges the text downward */
+}
+
+
+.about-image lottie-player {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-left
+   {
+    flex: 1 1 100%;
+    margin-top: 0;
+  }
+
+
+  .about-right {
+    flex: 1 1 50%;
+    margin-top: 6rem;
+  }
+
+
+  .about-list li {
+    text-align: center;
+  }
+}
+
+/* Theme */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --accent-color: #7c3aed;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --text-color: #f3f4f6;
+}
+
+/* === Skills Section === */
+.skills-section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 4rem 2rem;
+  max-width: 1300px;
+  margin: 2rem auto;
+}
+
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.skills-left {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.skills-left lottie-player {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+
+.skills-right {
+  flex: 1 1 50%;
+}
+
+.skills-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.skills-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 2rem; /* row-gap | column-gap */
+}
+
+
+.skills-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.skills-list li span {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .skills-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .skills-list {
+    columns: 1;
+  }
+
+  .skills-right {
+    flex: 1 1 100%;
+  }
+
+  .skills-left {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* experience section */
+.experience-section {
+  padding: 4rem 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.experience-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.experience-left {
+  flex: 1 1 50%;
+}
+
+.experience-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.experience-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: var(--text-color);
+}
+
+.experience-right {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.experience-right img,
+.experience-right lottie-player {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+/* Job Cards */
+.job-card {
+  background-color: rgba(124, 58, 237, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.job-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.job-card p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: gray;
+}
+
+.job-card {
+  background-color: rgba(255, 255, 255, 0.03); /* subtle box bg */
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.company-row {
+  display: flex;
+  align-items: center; /* Aligns vertically */
+  gap: 1rem;        /* Space between logo and text */
+  margin-bottom: 0.5rem;
+}
+
+.company-logo {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;   /* ensures alignment with text */
+  margin-top: 2px;          /* tweak if needed to fine-tune */
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .experience-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .experience-left,
+  .experience-right {
+    flex: 1 1 100%;
+  }
+
+  .experience-text {
+    text-align: justify;
+    color: var(--accent-color);
+  }
+
+  .experience-right img,
+  .experience-right lottie-player {
+    max-width: 280px;
+    background-color: var(--accent-color);
+  }
+}
+
+.experience-title {
+  color: var(--accent-color); /* Use the same variable if available */
+}
+
+.experience-right {
+  background: transparent; /* Ensures no unwanted background */
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .experience-title {
+      color: var(--accent-color); /* Match Skills text in dark mode */
+    }
 }
