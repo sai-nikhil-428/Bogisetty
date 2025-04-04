@@ -1149,19 +1149,34 @@ body.dark-mode .slider::before {
     flex: 1 1 100%;
   }
 
+  .resume-download-container {
+    margin-bottom: 1.2rem; /* Space below the download button */
+    justify-content: center;
+  }
+
   .intro {
-    font-size: 1.3rem;
+    margin-top: 1rem;      /* Space above heading text */
+    margin-bottom: 1rem;   /* Space below heading */
+    font-size: 1.4rem;      /* Slightly smaller for mobile */
+  }
+
+  .button-group {
+    margin-top: 2rem;       /* Space above social buttons */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .btn {
-    width: 70px;
-    height: 70px;
-    font-size: 12px;
+    width: 75px;
+    height: 75px;
+    font-size: 13px;
+    gap: 8px;
   }
 
   .btn svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 
   .card {
