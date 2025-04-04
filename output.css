@@ -1,22 +1,17 @@
 :root {
   --bg-color: #ffffff;
-  --text-color: #111827;
-  --accent-color: #7c3aed;
-  --nav-bg: #ffffff;
-  --nav-text: #374151;
-  --btn-bg: #00796b;
-  --btn-hover: #004d40;
-  --light: #d8dbe0;
-  --dark: #28292c;
+  --text-color: #333333;
+  --text-light: #f5f5f5; /* Light color for dark mode */
+  --accent-color: #6a5acd; /* Matching accent */
 }
 
+
 [data-theme="dark"] {
-  --bg-color: #0f172a;
-  --text-color: #f3f4f6;
-  --nav-bg: #0f172a;
-  --nav-text: #e5e7eb;
-  --btn-bg: #22c55e;
-  --btn-hover: #16a34a;
+  --bg-color: #121212;
+  --text-dark: #f1f1f1;
+  --text-light: #e0e0e0;
+   /*--accent-color: #ffcc00; */
+  --accent-color: #6a5acd; /* Matching accent */
 }
 
 
@@ -29,7 +24,14 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  /* color: var(--text-color);*/
+  color: var(--text-dark);
+}
+
+/* Apply dark mode styles globally */
+[data-theme="dark"] body {
+  background-color: var(--bg-color);
+  color: var(--text-light);
 }
 
 .justified-text {
@@ -88,55 +90,60 @@ body {
 }
 
 /* === Toggle Switch === */
+/* Toggle Switch Container */
 .toggle-switch {
-  position: relative;
-  width: 100px;
-  height: 50px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
+/* Switch Label */
 .switch-label {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--dark);
-  border-radius: 25px;
-  border: 3px solid var(--dark);
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
+/* Hide Default Checkbox */
 .checkbox {
   display: none;
-  position: absolute;
 }
 
+/* Slider */
 .slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 25px;
+  background-color: var(--toggle-bg, #ddd);
   border-radius: 25px;
-  transition: background 0.3s;
+  position: relative;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.checkbox:checked ~ .slider {
-  background-color: var(--light);
-}
-
+/* Circular Knob */
 .slider::before {
   content: "";
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--toggle-circle, #fff);
   border-radius: 50%;
-  background-color: var(--dark);
-  box-shadow: inset 12px -4px 0 0 var(--light);
-  transition: transform 0.3s;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
 }
 
-.checkbox:checked ~ .slider::before {
-  transform: translateX(50px);
-  box-shadow: none;
+/* Dark Mode Styling */
+body.dark-mode .slider {
+  background-color: var(--toggle-bg-dark, #444);
+}
+
+body.dark-mode .slider::before {
+  background-color: var(--toggle-circle-dark, #fff);
+  left: 25px;
 }
 
 /* === Resume Download Button === */
@@ -150,6 +157,7 @@ body {
 .label {
   background: transparent;
   border: 2px solid var(--accent-color);
+  /*   border: 2px solid  #ffcc00; */
   display: flex;
   align-items: center;
   border-radius: 50px;
@@ -385,174 +393,6 @@ body {
   }
 }
 
-/* === Teams Section === */
-.teams-title {
-  margin-top: 6rem;
-  text-align: center;
-  color: var(--text-color);
-  /* color: white; */
-  font-size: 2rem;
-}
-
-.teams-subtitle {
-  text-align: center;
-  /* color: rgba(255, 255, 255, 0.8);*/
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.teams-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.teams-container .card {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.teams-container .card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* === Team Card === */
-.card {
-  width: 350px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
-  background-color: #fffffe;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.5s ease;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 350px;
-  height: 100px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom: 3px solid #fefefe;
-  background: linear-gradient(40deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
-  transition: all 0.3s ease;
-}
-
-.card * {
-  z-index: 1;
-}
-
-.image {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 4px solid #fefefe;
-  margin-top: 30px;
-  background-color: #1468BF;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: all 0.5s ease;
-}
-
-.card-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  transition: all 0.5s ease;
-}
-
-.card-info span {
-  font-weight: 600;
-  font-size: 20px;
-  color: #161A42;
-  margin-top: 15px;
-  line-height: 5px;
-}
-
-.card-info p {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 14px;
-}
-
-.button {
-  background-color: #1468BF;
-  color: white;
-  padding: 5px 20px;
-  border-radius: 5px;
-  border: 1px solid white;
-  text-decoration: none;
-  transition: all 0.5s ease;
-}
-
-.card:hover {
-  width: 300px;
-  border-radius: 250px;
-}
-
-.card:hover::before {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border-bottom: none;
-  transform: scale(0.95);
-}
-
-.card:hover .card-info {
-  transform: translate(0, -15%);
-}
-
-.button:hover {
-  background-color: #FF6844;
-  transform: scale(1.1);
-}
-
-/* === Keyframes === */
-@keyframes pulse {
-  0% { scale: 0.95; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-  70% { scale: 1; box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
-  100% { scale: 0.95; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-}
-
-@keyframes installing {
-  from { height: 0; }
-  to { height: 100%; }
-}
-
-@keyframes rotate {
-  0% { transform: rotate(-90deg) translate(27px) rotate(0); opacity: 1; }
-  99% { transform: rotate(270deg) translate(27px) rotate(270deg); opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-@keyframes installed {
-  100% { width: 130px; border-color: rgb(35, 174, 35); }
-}
-
-@keyframes circleDelete {
-  100% { opacity: 0; visibility: hidden; }
-}
-
-@keyframes showInstalledMessage {
-  100% { opacity: 1; visibility: visible; right: 50px; }
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
 
 /* === ABOUT SECTION === */
 
@@ -856,19 +696,25 @@ body {
 }
 
 .job-card p {
+  text-align: center;
   font-size: 1rem;
   font-weight: 500;
   color: gray;
 }
 
+
 .job-card {
-  background-color: rgba(255, 255, 255, 0.03); /* subtle box bg */
+  background-color: rgba(255, 255, 255, 0.03);
   padding: 1.5rem;
   border-radius: 12px;
   margin-bottom: 1.5rem;
   color: var(--text-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* ✅ vertically center content */
+  gap: 0.5rem;
+  min-height: 140px;         /* ✅ give it vertical space */
 }
 
 .job-card:hover {
@@ -876,22 +722,55 @@ body {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
+
 .company-row {
   display: flex;
-  align-items: center; /* Aligns vertically */
-  gap: 1rem;        /* Space between logo and text */
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;         /* 🔽 smaller gap between logo and text */
+  text-align: center;
+  margin-top: -8px;     /* 🔽 pull logo closer to top */
+  margin-bottom: -4px;  /* 🔽 reduce space below the logo */
 }
 
 .company-logo {
-  width: 110px;
-  height: auto;
+  display: block;
   object-fit: contain;
-  display: inline-block;
-  vertical-align: middle;   /* ensures alignment with text */
-  margin-top: 2px;          /* tweak if needed to fine-tune */
+  margin: 0 auto;
 }
 
+/* === Capgemini Specific Logo === */
+.capgemini-logo {
+  width: 90px;
+  height: auto;
+  margin-top: 2px;     /* slight space above */
+  margin-bottom: 4px;  /* consistent spacing below */
+}
+
+/* === Accenture Specific Logo === */
+.accenture-logo {
+  width: 100px;
+  height: auto;
+  margin-top: 4px;     /* slightly more top space to align */
+  margin-bottom: 2px;
+}
+
+/* Calendar Date Line */
+.calendar-dates {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Calendar SVG Icon */
+.calendar-icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent-color);
+}
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -930,4 +809,423 @@ body {
     .experience-title {
       color: var(--accent-color); /* Match Skills text in dark mode */
     }
+}
+
+
+/* === Enhanced Standalone Education Card === */
+.enhanced-edu-card {
+  width: 100%;
+  max-width: 1290px;
+  margin: 1.5rem auto; /* ✅ Reduced vertical spacing between education and section below */
+  background-color: rgba(124, 58, 237, 0.05);
+  padding: 3rem 3rem;
+  border-radius: 1rem;
+  color: var(--text-color);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  word-wrap: break-word;
+  margin-bottom: 3rem; /* ⬅️ Increase this if it's low */
+}
+
+.education-section {
+  padding-top: 2rem; /* ⬅️ reduce this if needed */
+}
+
+.education-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0.5rem 0 1rem; /* ✅ Moves it up */
+  color: var(--accent-color);
+}
+
+/* Match text color everywhere */
+.education-section span {
+  color: var(--text-color) !important;
+}
+
+/* Degree title */
+.enhanced-edu-card .edu-degree {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs inside card */
+.enhanced-edu-card p,
+.enhanced-edu-card .edu-duration {
+  margin: 0.3rem 0;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* === Header Box (Light + Dark Background) === */
+.edu-heading-box {
+  background-color: rgba(255, 255, 255, 0.5);  /* Light mode */
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .edu-heading-box {
+  background-color: rgba(255, 255, 255, 0.05);  /* Subtle dark-gray */
+}
+
+/* === Education Details List === */
+.edu-details {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.edu-details li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.edu-details li div {
+  flex: 1;
+}
+
+.edu-details .tick {
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding-top: 0.2rem;
+}
+
+/* Compact superscript for "10th" style */
+.edu-details sup {
+  font-size: 0.8em;
+  vertical-align: top;
+  position: relative;
+  top: -0.1em;
+  margin-left: 1px;
+  margin-right: 2px;
+}
+
+/* === Transcript Button === */
+.transcript-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+}
+
+/* === Dark Mode Text Support === */
+[data-theme="dark"] .edu-details li,
+[data-theme="dark"] .edu-details li strong,
+[data-theme="dark"] .enhanced-edu-card p {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .education-section h2 {
+  color: var(--accent-color);  /* ✅ Reinforce color in dark mode */
+}
+
+/* === Teams Section === */
+.teams-title {
+  margin-top: 6rem;
+  text-align: center;
+  color: var(--text-color);
+  /* color: white; */
+  font-size: 2rem;
+}
+
+.teams-section {
+  padding-top: 4rem; /* ⬅️ Adjust this value as needed */
+  padding-bottom: 6rem; /* ⬅️ Add or increase this value */
+}
+
+
+.teams-subtitle {
+  text-align: center;
+  /* color: rgba(255, 255, 255, 0.8);*/
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.teams-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.teams-container .card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.teams-container .card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Team Card === */
+.card {
+  width: 350px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  background-color: #fffffe;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 350px;
+  height: 100px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 3px solid #fefefe;
+  background: linear-gradient(40deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  transition: all 0.3s ease;
+}
+
+.card * {
+  z-index: 1;
+}
+
+.image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid #fefefe;
+  margin-top: 30px;
+  background-color: #1468BF;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.5s ease;
+}
+
+.card-info span {
+  font-weight: 600;
+  font-size: 20px;
+  color: #161A42;
+  margin-top: 15px;
+  line-height: 5px;
+}
+
+.card-info p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.button {
+  background-color: #1468BF;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: 1px solid white;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+
+.card:hover {
+  width: 300px;
+  border-radius: 250px;
+}
+
+.card:hover::before {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border-bottom: none;
+  transform: scale(0.95);
+}
+
+.card:hover .card-info {
+  transform: translate(0, -15%);
+}
+
+.button:hover {
+  background-color: #FF6844;
+  transform: scale(1.1);
+}
+
+/* === Keyframes === */
+@keyframes pulse {
+  0% { scale: 0.95; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% { scale: 1; box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
+  100% { scale: 0.95; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+@keyframes installing {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(-90deg) translate(27px) rotate(0); opacity: 1; }
+  99% { transform: rotate(270deg) translate(27px) rotate(270deg); opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes installed {
+  100% { width: 130px; border-color: rgb(35, 174, 35); }
+}
+
+@keyframes circleDelete {
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes showInstalledMessage {
+  100% { opacity: 1; visibility: visible; right: 50px; }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+
+/* === Media Display  === */
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+    overflow-x: hidden;
+  }
+
+  .home-section,
+  .about-section,
+  .skills-section,
+  .experience-section,
+  .education-section,
+  .teams-section {
+    padding: 2rem 1rem;
+  }
+
+  .home-grid,
+  .about-wrapper,
+  .skills-wrapper,
+  .experience-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-text,
+  .home-lottie,
+  .skills-left,
+  .skills-right,
+  .experience-left,
+  .experience-right {
+    flex: 1 1 100%;
+  }
+
+  .intro {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    width: 70px;
+    height: 70px;
+    font-size: 12px;
+  }
+
+  .btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .card {
+    width: 95%;
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .card::before {
+    width: 100%;
+    height: 80px;
+  }
+
+  .image {
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+  }
+
+  .card-info span {
+    font-size: 16px;
+  }
+
+  .card-info p {
+    font-size: 13px;
+  }
+
+  .button {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+
+  .enhanced-edu-card,
+  .job-card {
+    padding: 2rem 1rem;
+  }
+
+  .edu-heading-box {
+    padding: 1rem;
+  }
+
+  .edu-details li {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .nav-content,
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+
+  .teams-title {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .teams-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
 }
