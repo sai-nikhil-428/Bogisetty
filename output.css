@@ -786,7 +786,7 @@ body.dark-mode .slider::before {
 
   .experience-text {
     text-align: justify;
-    color: var(--accent-color);
+    color: var(--text-color); /* ✅ Matches light/dark mode properly */
   }
 
   .experience-right img,
