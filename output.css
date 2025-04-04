@@ -1150,13 +1150,13 @@ body.dark-mode .slider::before {
   }
 
   .resume-download-container {
-    margin-bottom: 1.2rem; /* Space below the download button */
+    margin-bottom: 2rem; /* Space below the download button */
     justify-content: center;
   }
 
   .intro {
-    margin-top: 1rem;      /* Space above heading text */
-    margin-bottom: 1rem;   /* Space below heading */
+    margin-top: 2rem;      /* Space above heading text */
+    margin-bottom: 2rem;   /* Space below heading */
     font-size: 1.4rem;      /* Slightly smaller for mobile */
   }
 
