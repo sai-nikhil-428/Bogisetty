@@ -27,21 +27,26 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTop = Math.max(0, currentScroll);
   });
 
-  // Dark Mode Toggle
+  // Dark Mode Toggle (Updated)
   const toggleCheckbox = document.getElementById("dark-mode-toggle");
   const html = document.documentElement;
-  if (localStorage.getItem("theme") === "light") {
-    html.setAttribute("data-theme", "light");
-    toggleCheckbox.checked = false;
-  } else {
-    html.setAttribute("data-theme", "dark");
-    toggleCheckbox.checked = true;
-  }
 
-  toggleCheckbox.addEventListener("change", () => {
-    const theme = toggleCheckbox.checked ? "dark" : "light";
-    html.setAttribute("data-theme", theme);
+  
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.classList.toggle("dark-mode", theme === "dark");
     localStorage.setItem("theme", theme);
+  };
+  
+
+  // Load Theme from Local Storage
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  applyTheme(savedTheme);
+  toggleCheckbox.checked = savedTheme === "dark";
+
+  // Toggle Theme on Click
+  toggleCheckbox.addEventListener("change", () => {
+    applyTheme(toggleCheckbox.checked ? "dark" : "light");
   });
 
   // Resume Download Animation
