@@ -1397,6 +1397,76 @@ body.dark-mode .slider::before {
 [data-theme="dark"] .card-info p {
   color: #dddddd !important;
 }
+/* === Dark Mode Fix for Team Cards Text Ends === */
+
+
+/* === Contact Section === */
+#contact {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 4rem 1.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#contact .contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 0.5rem;
+  background-color:  rgba(255, 255, 255, 0.05); /* consistent with section above */
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 0.25rem;
+}
+
+#contact .contact-btn:hover {
+  background-color: var(--hover-bg, #f3f4f6);
+  color: var(--hover-color, #111);
+}
+
+/* Dark Mode Specific */
+[data-theme='dark'] #contact .contact-btn {
+  background-color:  rgba(255, 255, 255, 0.05);;
+  color: #d1d5db;
+  border-color: #374151;
+}
+
+[data-theme='dark'] #contact .contact-btn:hover {
+  background-color: #374151;
+  color: #fff;
+}
+
+/* Typography */
+#contact h2,
+#contact h3 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+#contact p {
+  color: var(--text-muted-color, #6b7280);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #contact {
+    padding: 3rem 1rem;
+  }
+
+  #contact .contact-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+/* === Contact Section Ends === */
+
 
 /* === Footer Widget Counter === */
 .footer {
@@ -1413,8 +1483,6 @@ body.dark-mode .slider::before {
 }
 
 /* Footer Widget Counter Ends */
-
-
 
 /* === Footer === */
 footer,
@@ -1437,3 +1505,194 @@ footer::after {
 }
 
 /* === Footer Ends === */
+
+
+/* === Universal Responsive Enhancements for Latest Devices === */
+
+/* For smaller phones like iPhone XR, Pixel 6, older Samsung phones */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .home-section,
+  .about-section,
+  .skills-section,
+  .experience-section,
+  .education-section,
+  .teams-section,
+  #contact {
+    padding: 2rem 1rem;
+  }
+
+  .resume-download-container {
+    justify-content: center;
+    margin: 1rem 0 3rem;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .nav-links,
+  .nav-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+
+  .teams-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 95%;
+    height: auto;
+    padding: 1.2rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .card-info span {
+    font-size: 16px;
+  }
+
+  .card-info p {
+    font-size: 13px;
+  }
+
+  .button {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .enhanced-edu-card,
+  .job-card {
+    padding: 2rem 1rem;
+  }
+
+  .edu-heading-box {
+    padding: 1rem;
+  }
+
+  .edu-details li {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+}
+
+/* For mid-size devices like iPhone Pro models, Pixels, Galaxy S21+ etc */
+@media (min-width: 481px) and (max-width: 768px) {
+  .home-grid,
+  .about-wrapper,
+  .skills-wrapper,
+  .experience-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-text,
+  .home-lottie,
+  .about-left,
+  .about-right,
+  .skills-left,
+  .skills-right,
+  .experience-left,
+  .experience-right {
+    flex: 1 1 100%;
+  }
+
+  .teams-container {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .card::before {
+    height: 80px;
+  }
+
+  .resume-download-container {
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .button-group {
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .btn {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* For tablets, large phones in landscape mode like iPads, Galaxy Tabs */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 320px;
+  }
+
+  .home-section,
+  .about-section,
+  .skills-section,
+  .experience-section,
+  .education-section,
+  .teams-section {
+    padding: 3rem 2rem;
+  }
+
+  .home-grid,
+  .about-wrapper,
+  .skills-wrapper,
+  .experience-wrapper {
+    gap: 1.5rem;
+  }
+
+  .resume-download-container {
+    margin-bottom: 2rem;
+  }
+
+  .nav-content {
+    padding: 0 1rem;
+  }
+}
+
+/* For high-resolution devices (Pixel 8 Pro, iPad Pro, Galaxy Ultra, etc.) */
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
+
+  .card {
+    width: 350px;
+  }
+
+  .home-section,
+  .teams-section {
+    padding-bottom: 5rem;
+  }
+}
+
+/* === Ensure All Lottie Files Are Responsive === */
+lottie-player {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
