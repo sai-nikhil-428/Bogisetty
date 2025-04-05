@@ -937,29 +937,100 @@ body.dark-mode .slider::before {
   color: var(--accent-color);  /* ✅ Reinforce color in dark mode */
 }
 
-/* === Teams Section === */
-.teams-title {
-  margin-top: 6rem;
-  text-align: center;
+
+/* === Awards and Certifications Section Start === */
+/* === Awards and Certifications Section Start === */
+.awards-certifications-section {
+  background-color: var(--bg-color);
   color: var(--text-color);
-  /* color: white; */
+  padding: 4rem 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.awards-certifications-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.awards-left {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.awards-left img {
+  width: 60%;
+  max-width: 70px;
+  height: 90px;
+}
+
+.awards-right {
+  flex: 1 1 50%;
+  text-align: left;
+  margin-left: -18px; /* 👈 Move the text section slightly to the left */
+  padding-bottom: 1rem; /* 👈 Adds a bit more vertical space */
+}
+
+.awards-title {
+  font-size: 2.2rem; /* ⬆️ Slightly increased font size */
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: var(--accent-color);
+}
+
+.awards-description {
+  font-size: 1.05rem; /* ⬆️ Increased font size for readability */
+  line-height: 1.85;
+  color: var(--text-color);
+  text-align: justify;
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .awards-certifications-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .awards-right {
+    text-align: center;
+  }
+
+  .awards-description {
+    text-align: justify;
+  }
+}
+/* === Awards and Certifications Section === */
+
+
+/* === Teams Section === */
+
+.teams-title {
   font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  text-align: center;
 }
 
 .teams-section {
-  padding-top: 4rem; /* ⬅️ Adjust this value as needed */
+  padding: 4rem 1rem;
   padding-bottom: 6rem; /* ⬅️ Add or increase this value */
+  background-color: var(--bg-color);
 }
-
 
 .teams-subtitle {
-  text-align: center;
-  /* color: rgba(255, 255, 255, 0.8);*/
   font-size: 1rem;
-  margin-bottom: 2rem;
   color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2rem;
   opacity: 0.8;
 }
+
 
 .teams-container {
   display: flex;
@@ -979,7 +1050,20 @@ body.dark-mode .slider::before {
   transform: translateY(0);
 }
 
-/* === Team Card === */
+
+/* === Owl Carousel Fixes === */
+.owl-carousel .owl-item {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
 .card {
   width: 350px;
   height: 300px;
@@ -994,8 +1078,7 @@ body.dark-mode .slider::before {
   overflow: hidden;
   position: relative;
   transition: all 0.5s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
-
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card::before {
@@ -1080,39 +1163,87 @@ body.dark-mode .slider::before {
   transform: scale(1.1);
 }
 
-/* === Keyframes === */
-@keyframes pulse {
-  0% { scale: 0.95; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-  70% { scale: 1; box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
-  100% { scale: 0.95; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+/* === Dots Styling for Owl Carousel === */
+
+/* === Teams Boxed Wrapper === */
+.teams-boxed-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem; /* Top, Sides, Bottom padding (Increased bottom) */
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-@keyframes installing {
-  from { height: 0; }
-  to { height: 100%; }
+.teams-boxed-wrapper .card {
+  margin-bottom: 2.5rem; /* Adds space under each card */
+  margin: 2.5rem 0; /* Adds equal space above and below */
 }
 
-@keyframes rotate {
-  0% { transform: rotate(-90deg) translate(27px) rotate(0); opacity: 1; }
-  99% { transform: rotate(270deg) translate(27px) rotate(270deg); opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
+[data-theme="dark"] .teams-boxed-wrapper {
+  background-color: #1c1c1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
 }
 
-@keyframes installed {
-  100% { width: 130px; border-color: rgb(35, 174, 35); }
+/* Owl Dots */
+.owl-dots {
+  text-align: center;
+  margin-top: 20px;
 }
 
-@keyframes circleDelete {
-  100% { opacity: 0; visibility: hidden; }
+.owl-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background: #ccc;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
-@keyframes showInstalledMessage {
-  100% { opacity: 1; visibility: visible; right: 50px; }
+.owl-dot.active {
+  background: #7c3aed; /* Accent color */
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .teams-boxed-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .card {
+    width: 95% !important;
+    height: auto;
+    padding: 1.2rem 1rem;
+  }
+
+  .card::before {
+    width: 100% !important;
+    height: 80px;
+  }
+
+  .image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .card-info span {
+    font-size: 18px;
+  }
+
+  .card-info p {
+    font-size: 13px;
+  }
 }
+
+[data-theme="dark"] .teams-boxed-wrapper {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+/* === Teams section  end === */
 
 
 /* === Media Display  === */
@@ -1266,3 +1397,43 @@ body.dark-mode .slider::before {
 [data-theme="dark"] .card-info p {
   color: #dddddd !important;
 }
+
+/* === Footer Widget Counter === */
+.footer {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding-bottom: 1rem;
+}
+
+.footer p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Footer Widget Counter Ends */
+
+
+
+/* === Footer === */
+footer,
+footer * {
+  border: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+footer::before,
+footer::after {
+  display: none !important;
+}
+
+
+
+/* Optional: slightly muted color in dark mode */
+[data-theme="dark"] .site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === Footer Ends === */
