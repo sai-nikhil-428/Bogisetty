@@ -27,24 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTop = Math.max(0, currentScroll);
   });
 
-  // Dark Mode Toggle (Updated)
+  // Dark Mode Toggle
   const toggleCheckbox = document.getElementById("dark-mode-toggle");
-  const html = document.documentElement;
 
-  
   const applyTheme = (theme) => {
     document.documentElement.setAttribute("data-theme", theme);
     document.body.classList.toggle("dark-mode", theme === "dark");
     localStorage.setItem("theme", theme);
   };
-  
 
-  // Load Theme from Local Storage
-  const savedTheme = localStorage.getItem("theme") || "dark";
+  // Force dark mode as default if no theme is stored
+  const savedTheme = localStorage.getItem("theme") ?? "dark";
   applyTheme(savedTheme);
   toggleCheckbox.checked = savedTheme === "dark";
 
-  // Toggle Theme on Click
   toggleCheckbox.addEventListener("change", () => {
     applyTheme(toggleCheckbox.checked ? "dark" : "light");
   });
@@ -96,4 +92,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, { threshold: 0.1 });
   animatedCards.forEach(card => observer.observe(card));
+
+  // Owl Carousel Initialization for Teams
+  $('.teams-carousel').owlCarousel({
+    loop: true,
+    margin: 20,
+    nav: false,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      768: {
+        items: 2
+      },
+      992: {
+        items: 3
+      }
+    }
+  });
 });
