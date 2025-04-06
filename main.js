@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { threshold: 0.1 });
   animatedCards.forEach(card => observer.observe(card));
 
-  // Owl Carousel Initialization for Teams
+  // Owl Carousel Initialization for Teams //
   $('.teams-carousel').owlCarousel({
     loop: true,
     margin: 20,
