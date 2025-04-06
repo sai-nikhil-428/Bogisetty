@@ -1008,8 +1008,155 @@ body.dark-mode .slider::before {
 /* === Awards and Certifications Section === */
 
 
-/* === Teams Section === */
+/* === Promotions Section Starts=== */
+.promotions-section {
+  padding: 4rem 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
 
+.promotions-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.promotions-subtitle {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.promotions-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.promo-card {
+  background-color: rgba(124, 58, 237, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.promo-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.promo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.promo-form input,
+.promo-form textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.promo-form button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.promo-form button:hover {
+  background-color: #5a34b0;
+}
+
+.success-message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: green;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* === Clean Emoji Reactions === */
+.emoji-reactions button {
+  background: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.emoji-reactions button:hover {
+  transform: scale(1.2) translateY(-4px);
+}
+
+.emoji-reactions button::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 2px 6px;
+  font-size: 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.emoji-reactions button:hover::before {
+  opacity: 1;
+}
+
+[data-theme="dark"] .emoji-reactions button::before {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .promo-card {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .promo-form input,
+[data-theme="dark"] .promo-form textarea {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .promo-form button:hover {
+  background-color: #7c3aed;
+}
+/* === Promotions Section Ends=== */
+
+
+/* === Teams Section === */
 .teams-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
@@ -1102,13 +1249,20 @@ body.dark-mode .slider::before {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  border: 4px solid #fefefe;
-  margin-top: 30px;
+  border: 4px solid #fff;
   background-color: #1468BF;
+  margin-top: 30px;
+  background-size: cover;
   background-position: center;
+  object-fit: cover; /* 👈 Ensures proper scaling */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-repeat: no-repeat;
   transition: all 0.5s ease;
 }
+
 
 .card-info {
   display: flex;
@@ -1225,10 +1379,21 @@ body.dark-mode .slider::before {
   }
 
   .image {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background-color: #1468BF;
+    margin-top: 80px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover; /* 👈 Ensures proper scaling */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
+  
   .card-info span {
     font-size: 18px;
   }
@@ -1323,10 +1488,21 @@ body.dark-mode .slider::before {
   }
 
   .image {
-    width: 70px;
-    height: 70px;
-    margin-top: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background-color: #1468BF;
+    margin-top: 80px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover; /* 👈 Ensures proper scaling */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  
 
   .card-info span {
     font-size: 16px;
@@ -1559,9 +1735,21 @@ footer::after {
   }
 
   .image {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background-color: #1468BF;
+    margin-top: 80px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover; /* 👈 Ensures proper scaling */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  
 
   .card-info span {
     font-size: 16px;
